@@ -25,14 +25,19 @@ const Auth = () => {
     }
   }, [userId]);
 
-  return (
-    <div className="w-full h-screen  flex flex-col gap-6 items-center justify-center font-mono">
-      <Image src={Paw} alt="paw" />
-      <a className="btn btn-outline btn-secondary rounded-sm" href={url}>
-        {Cookies.get("token") ? "You are Logged In" : "Login In with AniList"}
-      </a>
-    </div>
-  );
+  useEffect(() => {
+    ReactDOM.hydrate(
+      <div className="w-full h-screen  flex flex-col gap-6 items-center justify-center font-mono">
+        <Image src={Paw} alt="paw" />
+        <a className="btn btn-outline btn-secondary rounded-sm" href={url}>
+          {Cookies.get("token") ? "You are Logged In" : "Login In with AniList"}
+        </a>
+      </div>,
+      document.getElementById("root")
+    );
+  }, [url]);
+
+  return <div id="root" />;
 };
 
 export default Auth;
