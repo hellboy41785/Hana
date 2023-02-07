@@ -16,7 +16,7 @@ const MyList = ({info}) => {
     mediaId: info.id,
   });
 
-  if (isLoading) return <Loader/>;
+  if (isLoading) return <></>;
   const myList = data.data.Page?.mediaList[0];
   return (
     <>

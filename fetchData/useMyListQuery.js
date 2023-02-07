@@ -27,7 +27,9 @@ const fetchLists=async(userId,type)=>{
 }
 
 export const useMyListQuery = (userId,type,status) => {
-  return useQuery(["myList",type,status], () => fetchMyListData(userId,type,status));
+  return useQuery(["myList",type,status], () => fetchMyListData(userId,type,status),{
+    refetchOnWindowFocus:false
+  });
 };
 export const useListsQuery = (userId,type) => {
   return useQuery(["List",type], () => fetchLists(userId,type),{

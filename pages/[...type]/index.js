@@ -13,7 +13,7 @@ const Information = () => {
 
   const info = data?.data.Media;
 
-  if (isLoading) return <Loader />;
+  if (isLoading || isFetching) return <Loader />;
   return (
     <>
       <Head>

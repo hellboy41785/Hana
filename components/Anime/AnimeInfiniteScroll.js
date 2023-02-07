@@ -13,7 +13,7 @@ const AnimeInfiniteScroll = ({ season, year }) => {
     isFetchingNextPage,
   } = useAnimeData(season, year, 1, 16);
 
-  if (isLoading) return <Loader />;
+  if (isLoading || isFetching) return <Loader />;
 
   const anime = data.pages;
 

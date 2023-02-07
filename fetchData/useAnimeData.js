@@ -64,6 +64,7 @@ export const useAnimeData = (season, seasonYear, page, perPage) => {
         const nextPage = allPages.length + 1;
         return lastPage.length !== 0 ? nextPage : undefined;
       },
+      refetchOnWindowFocus:false
     }
   );
 };
@@ -77,11 +78,14 @@ export const useMangaData = (page, perPage) => {
         const nextPage = allPages.length + 1;
         return lastPage.length !== 0 ? nextPage : undefined;
       },
+      refetchOnWindowFocus:false
     }
   );
 };
 export const useInfo = (type, id) => {
-  return useQuery(["info", type, id], () => fetchInfoData(type, id));
+  return useQuery(["info", type, id], () => fetchInfoData(type, id),{
+    refetchOnWindowFocus:false
+  });
 };
 
 export const useSearchData = ({ search }) => {

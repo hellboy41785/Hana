@@ -24,7 +24,7 @@ const Airing = ({}) => {
     1,
     8
   );
-  if (isLoading) return <Loader />;
+  if (isLoading || isFetching) return <Loader />;
 
   const airing = data.pages[0].data.Page.media;
 

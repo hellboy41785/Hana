@@ -10,7 +10,7 @@ const Entries = ({ mylist }) => {
     mylist[1],
     mylist[2]
   );
-  if (isLoading) return <Loader />;
+  if (isLoading || isFetching) return <Loader />;
 
   const myLists = data.data.MediaListCollection.lists;
   return (

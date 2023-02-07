@@ -13,7 +13,7 @@ const MangaInfiniteScroll = () => {
     isFetchingNextPage,
   } = useMangaData(1, 16);
 
-  if (isLoading) return <Loader />;
+  if (isLoading || isFetching) return <Loader />;
 
   const manga = data?.pages;
 

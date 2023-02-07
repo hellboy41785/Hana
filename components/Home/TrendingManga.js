@@ -15,7 +15,7 @@ const TrendingManga = () => {
           <h1 className="hover:text-yellow-400 cursor-pointer">View All</h1>
         </Link>
       </div>
-      <GridComp type={trendingManga} name="Trending Manga" isFetched={isFetched}/>
+      <GridComp type={trendingManga || isFetching} name="Trending Manga" isFetched={isFetched}/>
     </div>
   );
 };

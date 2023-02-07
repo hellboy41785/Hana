@@ -1,12 +1,11 @@
 import { useState } from "react";
-import { useAddQuery} from "../../fetchData/useAddQuery";
+import { useAddQuery } from "../../fetchData/useAddQuery";
 import Cookies from "js-cookie";
 import { useMyListData } from "../../fetchData/useAnimeStore";
 import { BsPlus, BsFillPlayFill } from "react-icons/bs";
 import { AiFillCalendar, AiTwotoneEdit } from "react-icons/ai";
 
-
-const SaveToList = ({ info,myInfo}) => {
+const SaveToList = ({ info, myInfo }) => {
   const setMyData = useMyListData((state) => state.setMyData);
   const setUpdateData = useMyListData((state) => state.setUpdateData);
 
@@ -24,11 +23,12 @@ const SaveToList = ({ info,myInfo}) => {
 
   const handleSubmit = (value) => {
     mutate({ token: token, mediaId: mediaID, status: value });
-    setMyData(info.title.english, value, true);
+    setMyData(
+      info.title.english === null ? info.title.romaji : info.title.english,
+      value,
+      true
+    );
   };
-
-
-
 
   return (
     <div className="w-full space-y-1 ">
@@ -51,7 +51,8 @@ const SaveToList = ({ info,myInfo}) => {
                   newInitial: true,
                   newProgress: 0,
                   newScore: 0,
-                  newEpisodes:info.type ==="ANIME" ? info.episodes : info.chapters
+                  newEpisodes:
+                    info.type === "ANIME" ? info.episodes : info.chapters,
                 });
               }}
             />
@@ -66,7 +67,8 @@ const SaveToList = ({ info,myInfo}) => {
                   newInitial: true,
                   newProgress: myInfo.progress,
                   newScore: myInfo.score,
-                  newEpisodes:info.type ==="ANIME" ? info.episodes : info.chapters
+                  newEpisodes:
+                    info.type === "ANIME" ? info.episodes : info.chapters,
                 });
               }}
             />

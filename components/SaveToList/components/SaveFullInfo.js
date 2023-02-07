@@ -36,7 +36,7 @@ const SaveFullInfo = () => {
   }
 
   return (
-    <div className="fixed top-0 z-10 flex items-center justify-center w-full h-full p-1 font-mono ">
+    <div className="fixed top-0 z-20 flex items-center justify-center w-full h-full p-1 font-mono ">
       <div className="bg-[#1a1c1e] w-full p-3 space-y-7 max-w-lg">
         <h1 className="text-2xl">{updateData.title.english}</h1>
         <div className="flex flex-col gap-6 ">
