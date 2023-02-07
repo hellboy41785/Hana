@@ -21,7 +21,8 @@ const QuoteInfo = ({ quote, fetch }) => {
       refetch();
     }, 1500);
   };
-
+  
+  anime === undefined &&  handleUpdate()
   return (
     <div className="relative w-full">
       <div className="relative">
