@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 import Timer from "./Timer";
 import Cookies from "js-cookie";
-import MyList from "./Mylist";
+import MyList from "./MyList";
 const TopStyle = ({ info }) => {
   return (
     <div className="w-full h-full font-mono ">
