@@ -1,11 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind variants;
 
-:root {
+/* ::-webkit-scrollbar {
+    width: 5px;
 
-  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
-    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
-    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
 
 }
+@layer utilities {
+    .medium::-webkit-scrollbar-thumb {
+      width: 2px;
+      background-color: #5b77c5;
+    }
+  }
+
+/* Style the thumb */
+/* ::-webkit-scrollbar-thumb {
+    background-color: #6a6767;
+    border-radius: 5px;
+    width: 3px;
+
+
+} */ 

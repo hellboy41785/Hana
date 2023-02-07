@@ -1,0 +1,192 @@
+// import { useLogin } from "../../fetchData/useAnimeData"
+// export const useLogin = () => {
+//   return useQuery(["login",], () => Login());
+// };
+
+//   const {data,isLoading,error} = useLogin()
+//   if(isLoading)
+//    return <h1>Loading....</h1>
+
+//  if(error)
+//   return console.log(error)
+
+//    console.log(data)
+
+
+
+
+// export const Login = async () => {
+//   // const header ={
+//   //   'Authorization': 'Bearer ' + accessToken,
+//   //   'Content-Type': 'application/json',
+//   //   'Accept': 'application/json',
+//   // }
+//   const options = {
+//     uri: 'https://anilist.co/api/v2/oauth/token',
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//       'Accept': 'application/json',
+//     },
+//     json: {
+//       'grant_type': 'authorization_code',
+//       'client_id': '{3908}',
+//       'client_secret': '{RdrHxwpynrTyPrU75Un2fU6Iv82GUmLhGEQoGxP1}',
+//       'redirect_uri': '{https://anilistmikilior1v1.p.rapidapi.com/searchSeries }', // http://example.com/callback
+//       'code': '{code}', // The Authorization Code received previously
+//     },
+    
+//   };
+
+//   const response = await axios(options);
+
+//   return response?.data;
+// };
+
+http://localhost:3000/login#access_token=
+eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijc5Y2FkOWRhN2U4OGE2NDAxNmZiMzk0NDYzMmRjYjlhNjhkNzA1NjlkMWFkZjR
+hMWE3ZGNlNjFhZTUwMWQ0NzFiYmY5MDM3MTAxMGVhOWY5In0.eyJhdWQiOiIxMDM1MCIsImp0aSI6Ijc5Y2FkOWRhN2U4OGE2NDAxNmZiMzk0N
+DYzMmRjYjlhNjhkNzA1NjlkMWFkZjRhMWE3ZGNlNjFhZTUwMWQ0NzFiYmY5MDM3MTAxMGVhOWY5IiwiaWF0IjoxNjc0MTk5NzU2LCJuYmYiOjE2N
+zQxOTk3NTYsImV4cCI6MTcwNTczNTc1Niwic3ViIjoiNjI1MjYwIiwic2NvcGVzIjpbXX0.AME_dTEEG-rRwQTY9drSQolYZL3hbEDQXITtXOWpj
+dYej6BOg9jbwxmW4SQrR_hJfD5pX5E-rKg95cHE77ILZn_5UklCundodpvFfjZJ3ooMglFmhkX_UxCMd1JPHoTpsgqamFMpanSmgyba4_-kGBxuI-3B
+dy2W1DCmZIW7ufzuILWtL83zHj61XTSlJlXCBw6afINuK91bXhfF6OEcYT9MkI7jS7MOoMEmLjCNc_0_RIKTERkItOIuXjJ_SBrWqzy7nYOWvXJIeLpa
+7cmaqACQgMDMD_w6pU9pdiNnjfWlRpCCYk9xHWDgfTRlI8hykLqPp1JuC4u2U4KY-X-I5QP4jcr1QD-pzziAj7mauKJSvdsmL4UE5ouRStLsDILUKarLBl
+OJ33oraudavdx4NhYl89YDGvoyqhIAuJjvcIetGt-0I2QAaVdfwO_FQpzKzLUOBLYzAdrtjfFwHvHbFPPvCXDp3gnbt74S20L7FCejZ9Id-rM4iJwaa5Jr
+lxf6Q4u2_0v-kpkfLJhn3TXtnnflQQpo8kBJnJlLPYf86_kHaYF398soz4EM0PSLa2ypj6JvhJ7_Kx61uiCa3H8ng2syN9VwlIW8nSDnTLRYKokdqGvSC1s
+Xa_uP-Wowkf9bO-qMkzKTNW2HnNqtx77sFV_5TCkyHNy0CLc3VmT0rI&token_type=Bearer&expires_in=31536000
+
+
+export const getServerSideProps = async (context) => {
+  const { params } = context;
+
+  const queryClientMyList = new QueryClient();
+  
+
+  await queryClientAnime.fetchQuery(["myList"], () => fetchMyListData());
+  
+
+  return {
+    props: {
+      queryClientMyList: dehydrate(queryClientMyList),
+      
+    },
+  };
+};
+
+
+<div className="relative">
+  <label className="input">
+    <input className="block w-full border border-current rounded-md py-3 px-4 text-current bg-transparent focus:outline-none focus:border-accent-500 focus:shadow-outline-blue" type="text" placeholder=" " />
+    <span className="absolute top-0 left-0 py-3 px-2 bg-pink text-white font-bold leading-none" style={{transform: 'translate(0, 0)', transformOrigin: '0 0', transition: 'transform 120ms ease-in'}}>
+      Some Fancy Label
+    </span>
+  </label>
+</div>
+
+data:{
+  list:[
+    {
+      name:rapidapi
+      id:2
+      entries:[
+        {
+          id:2
+          name:hell
+        }
+        {
+          id:2
+          name:hell
+        }
+        {
+          id:2
+          name:hell
+        }
+      ]
+    }
+    {
+      name:rapidapi
+      id:2
+      entries:[
+        {
+          id:2
+          name:hell
+        }
+        {
+          id:2
+          name:hell
+        }
+        {
+          id:2
+          name:hell
+        }
+      ]
+    }
+    {
+      name:rapidapi
+      id:2
+      entries:[
+        {
+          id:2
+          name:hell
+        }
+        {
+          id:2
+          name:hell
+        }
+        {
+          id:2
+          name:hell
+        }
+      ]
+    }
+  ]
+}
+
+
+export const checkList = async ({ token, userId, mediaId }) => {
+  const headers = {
+    Authorization: `Bearer ${token}`,
+    "Content-Type": "application/json",
+    Accept: "application/json",
+  };
+  const data = {
+    query: `
+              query($userId:Int,$mediaId:Int){
+                MediaList(userId:$userId,mediaId:$mediaId){
+                    id
+                    mediaId
+                    status
+                    progress
+                    
+                  }
+              }`,
+    variables: { userId, mediaId },
+  };
+  const options = {
+    method: "POST",
+    url: "https://graphql.anilist.co",
+    headers,
+    data,
+  };
+
+  const res = await axios(options);
+  return res?.data;
+}
+
+export const useCheckListQuery = ({ token, userId, mediaId }) => {
+  return useQuery({
+    queryKey: ["checkList", userId, mediaId],
+    queryFn: () => checkList({ token, userId, mediaId }),
+  });
+};
+
+  const { data, isLoading} = useCheckListQuery({
+    token: token,
+    userId: myId,
+    mediaId: mediaID ,
+  });
+  if (isLoading) return <></>;
+
+  console.log(data )
+
+  in this code it should only run when if mediaID exist on checkList function 

@@ -1,41 +1,42 @@
-import { Inter } from '@next/font/google'
-import { useAnimeData, fetchData } from '../fetchData/useAnimeData'
-import Image from 'next/image'
-import { QueryClient,dehydrate } from 'react-query'
-
+import {
+  useAnimeData,
+  fetchData,
+  useMangaData,
+  fetchMangaData,
+} from "../fetchData/useAnimeData";
+import { QueryClient, dehydrate } from "@tanstack/react-query";
+import Discover from "../components/Home/Quote/Discover";
+import Airing from "../components/Home/Airing";
+import NextAiring from "../components/Home/NextAiring";
+import TrendingManga from "../components/Home/TrendingManga";
+import Loader from "../components/Loader";
+import { withCSR } from "../HOC/withCSR";
 
 export default function Home() {
-   const {data,isLoading} = useAnimeData()
-
-   if(isLoading)
-   return <h1>Loading .....</h1>
-   
-   const lists = data?.data.Page.media
-   console.log(lists)
 
   return (
     <>
-     <div className="text-2xl">
-       {lists?.map((list)=>{
-
-          return <h1 key={list.id} className="text-2xl text-white">{list.title?.english}</h1>
-       })}
-     </div>
+      <Discover />
+      <Airing />
+      <NextAiring />
+      <TrendingManga />
     </>
-  )
+  );
 }
 
-export const getServerSideProps= async(context)=>{
- const {params} = context
+export const getServerSideProps = withCSR(async (context) => {
+  const { params } = context;
 
- const queryClient = new QueryClient()
+  const queryClientAnime = new QueryClient();
+  const queryClientManga = new QueryClient();
 
- await queryClient.fetchQuery(["anime-data"],()=>fetchData())
+  await queryClientAnime.fetchQuery(["anime-data"], () => fetchData());
+  await queryClientManga.fetchQuery(["manga-data"], () => fetchMangaData());
 
- return{
-  props:{
-    queryClient: dehydrate(queryClient)
-  }
- }
-}
-
+  return {
+    props: {
+      queryClientAnime: dehydrate(queryClientAnime),
+      queryClientManga: dehydrate(queryClientManga),
+    },
+  };
+});

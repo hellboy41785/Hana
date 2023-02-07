@@ -1,74 +1,93 @@
-import { useQuery } from "react-query";
+import { useQuery, useInfiniteQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { Headers, Url } from "./Headers";
+import { Information, mangaData, animeData, searchData } from "./apiQuery";
 
-export const fetchData = async() => {
-  const headers = {
-    "content-type": "application/json",
-    "X-RapidAPI-Key": "71494048f6msh14f8a409cfe7684p12c51fjsna63324aba25e",
-    "X-RapidAPI-Host": "anilist-graphql.p.rapidapi.com",
-  };
-
-  const requestData = {
-    query: `
-    query{
-        Page(page: 1, perPage: 10) {
-          pageInfo {
-            total
-            perPage
-            currentPage
-            lastPage
-            hasNextPage
-          }
-          media(type: ANIME, season: FALL, seasonYear: 2022) {
-            id
-            title {
-              romaji
-              english
-            
-            }
-            season
-            coverImage {
-              extraLarge
-              large
-              medium
-              color
-            }
-            bannerImage
-            seasonYear
-            episodes
-            type
-            source
-            airingSchedule {
-              pageInfo {
-                total
-                perPage
-                currentPage
-                lastPage
-                hasNextPage
-              }
-              edges {
-                id
-                
-              }
-            }
-            status
-          }
-        }
-      }
-    `,
-  };
+export const fetchData = async (season, seasonYear, page, perPage) => {
   const options = {
     method: "POST",
-    url: "https://anilist-graphql.p.rapidapi.com/",
-    headers,
-    data: requestData,
+    url: Url,
+    headers: Headers,
+    data: animeData(season, seasonYear, page, perPage),
   };
 
   const response = await axios(options);
 
-  return response?.data
+  return response?.data;
 };
 
-export const useAnimeData = () => {
-  return useQuery("anime-data",()=>fetchData());
+export const fetchMangaData = async (page, perPage) => {
+  const options = {
+    method: "POST",
+    url: Url,
+    headers: Headers,
+    data: mangaData(page, perPage),
+  };
+
+  const response = await axios(options);
+
+  return response?.data;
+};
+
+export const fetchInfoData = async (type, id) => {
+  const options = {
+    method: "POST",
+    url: Url,
+    headers: Headers,
+    data: Information(type, id),
+  };
+
+  const response = await axios(options);
+
+  return response?.data;
+};
+
+export const fetchSearchData = async ({ search }) => {
+  const options = {
+    method: "POST",
+    url: Url,
+    headers: Headers,
+    data: searchData({ search }),
+  };
+
+  const response = await axios(options);
+
+  return response?.data;
+};
+
+export const useAnimeData = (season, seasonYear, page, perPage) => {
+  return useInfiniteQuery(
+    ["anime-data", season, seasonYear],
+    ({ pageParam }) => fetchData(season, seasonYear, pageParam, perPage),
+    {
+      getNextPageParam: (lastPage, allPages) => {
+        const nextPage = allPages.length + 1;
+        return lastPage.length !== 0 ? nextPage : undefined;
+      },
+    }
+  );
+};
+
+export const useMangaData = (page, perPage) => {
+  return useInfiniteQuery(
+    ["manga-data"],
+    ({ pageParam }) => fetchMangaData(pageParam, perPage),
+    {
+      getNextPageParam: (lastPage, allPages) => {
+        const nextPage = allPages.length + 1;
+        return lastPage.length !== 0 ? nextPage : undefined;
+      },
+    }
+  );
+};
+export const useInfo = (type, id) => {
+  return useQuery(["info", type, id], () => fetchInfoData(type, id));
+};
+
+export const useSearchData = ({ search }) => {
+  return useQuery({
+    queryKey: ["search", search],
+    queryFn: () => fetchSearchData({ search }),
+    cacheTime: 0,
+  });
 };

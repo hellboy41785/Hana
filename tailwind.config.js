@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui"),require("tailwindcss-scrollbar")],
   daisyui: {
     styled: true,
     themes: true,
@@ -18,4 +18,8 @@ module.exports = {
     prefix: "",
     darkTheme: "forest",
   },
+  variants: {
+    // ...
+    scrollbar: ['dark']
 }
+};
