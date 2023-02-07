@@ -3,8 +3,6 @@ import Timer from "./Timer";
 import Cookies from "js-cookie";
 import MyList from "./Mylist";
 const TopStyle = ({ info }) => {
-
-
   return (
     <div className="w-full h-full font-mono ">
       <div className="relative ">
@@ -27,12 +25,7 @@ const TopStyle = ({ info }) => {
               alt="coverImage"
             />
             <div className="absolute bottom-0 w-full p-1 ">
-              {Cookies.get("token") && (
-                <MyList
-                  info={info}
-                  
-                />
-              )}
+              {Cookies.get("token") && <MyList info={info} />}
             </div>
           </div>
           {/* info */}
