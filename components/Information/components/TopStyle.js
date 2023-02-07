@@ -36,7 +36,8 @@ const TopStyle = ({ info }) => {
               alt="coverImage"
             />
             <div className="absolute bottom-0 w-full p-1 ">
-              <SaveToList info={info} myInfo={myList === undefined ? null : myList} />
+            {Cookies.get("token") && <SaveToList info={info} myInfo={myList === undefined ? null : myList} /> }
+              
             </div>
           </div>
           {/* info */}
