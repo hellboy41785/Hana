@@ -2,6 +2,7 @@ import { useQuoteInfo } from "../../../fetchData/useQuoteApi";
 import SaveToList from "../../SaveToList/SaveToList";
 import Cookies from "js-cookie";
 import Link from "next/link";
+import Loader from "../../Loader";
 
 const QuoteInfo = ({ quote, fetch }) => {
   const { data, isLoading, refetch,isFetched } = useQuoteInfo({

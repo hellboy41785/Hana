@@ -1,29 +1,20 @@
 import { format } from "date-fns";
 import Timer from "./Timer";
-import SaveToList from "../../SaveToList/SaveToList";
-import { useCheckListQuery } from "../../../fetchData/useAddQuery";
-import { useAnimeStore } from "../../../fetchData/useAnimeStore";
 import Cookies from "js-cookie";
-
+import MyList from "./Mylist";
 const TopStyle = ({ info }) => {
-  const userId = useAnimeStore((state) => state.userId);
-  const myId = userId.data?.Viewer.id;
-  const token = Cookies.get("token");
-    const { data, isLoading } = useCheckListQuery({
-    token: token,
-    userId: myId,
-    mediaId: info.id,
-  });
 
-  if (isLoading) return <></>;
-  const myList = data.data.Page?.mediaList[0];
 
   return (
     <div className="w-full h-full font-mono ">
       <div className="relative ">
         <img
           className="object-cover w-full max-h-64 blur-sm hover:blur-0"
-          src={info.bannerImage === null ? "https://wallpapercave.com/wp/wp5734635.jpg" : info.bannerImage}
+          src={
+            info.bannerImage === null
+              ? "https://wallpapercave.com/wp/wp5734635.jpg"
+              : info.bannerImage
+          }
           alt="bannerImage"
         />
       </div>
@@ -36,8 +27,12 @@ const TopStyle = ({ info }) => {
               alt="coverImage"
             />
             <div className="absolute bottom-0 w-full p-1 ">
-            {Cookies.get("token") && <SaveToList info={info} myInfo={myList === undefined ? null : myList} /> }
-              
+              {Cookies.get("token") && (
+                <MyList
+                  info={info}
+                  
+                />
+              )}
             </div>
           </div>
           {/* info */}
