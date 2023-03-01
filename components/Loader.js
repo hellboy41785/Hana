@@ -3,8 +3,8 @@ import Image from "next/image";
 const Loader = () => {
   return (
     
-      <div className="fixed bottom-4 ml-3">
-        <Image className="w-10" src={Loading} alt="loading" priority="high" as="loading"/>
+      <div className="fixed ml-3 bottom-4">
+        <Image className="w-10" src={Loading} alt="loading" priority={true}  loading="eager"/>
       </div>
     
   );
