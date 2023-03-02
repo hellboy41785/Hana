@@ -4,10 +4,10 @@ import Link from "next/link";
 import Loader from "../Loader";
 
 const NextAiring = () => {
-  const currentMonth = (new Date().getMonth() + 1 + 1) % 12;
+  const currentMonth = (new Date().getMonth() + 1 + 1) 
   let season;
 
-  if (currentMonth >= 12 || currentMonth <= 2) {
+  if (currentMonth >= 12 || currentMonth <= 3) {
     season = "WINTER";
   } else if (currentMonth >= 3 && currentMonth <= 5) {
     season = "SPRING";
@@ -17,6 +17,8 @@ const NextAiring = () => {
     season = "FALL";
   }
   const currentYear = new Date().getFullYear();
+  console.log(currentMonth)
+  console.log(new Date().getMonth())
   const { data, isLoading, isFetching, isFetched } = useAnimeData(
     season,
     currentYear,
