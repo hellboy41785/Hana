@@ -12,7 +12,7 @@ const QuoteInfo = ({ quote, fetch }) => {
   });
 
   if (isLoading || isFetching) return <QuoteLoader />;
-  if(isError) return <QuoteError refetch={refetch} anime={quote.anime}/>
+  if(isError) return <QuoteError refetch={fetch} anime={quote.anime}/>
 
   const anime = data === undefined ? null : data.data.Media;
   const character = data === undefined ? null : data.data.Character;
