@@ -1,7 +1,5 @@
 import {
-  useAnimeData,
   fetchData,
-  useMangaData,
   fetchMangaData,
 } from "../fetchData/useAnimeData";
 import { QueryClient, dehydrate } from "@tanstack/react-query";
@@ -9,7 +7,6 @@ import Discover from "../components/Home/Quote/Discover";
 import Airing from "../components/Home/Airing";
 import NextAiring from "../components/Home/NextAiring";
 import TrendingManga from "../components/Home/TrendingManga";
-import Loader from "../components/Loader";
 import { withCSR } from "../HOC/withCSR";
 
 export default function Home() {
