@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 const MiddleStyle = ({ info }) => {
   return (
     <>
@@ -16,20 +14,18 @@ const MiddleStyle = ({ info }) => {
         {info.tags.length !== 0 && (
           <div className="space-y-3">
             <h1 className="text-2xl">Tags</h1>
-            <div className="grid grid-cols-5 md:grid-cols-7 gap-2">
+            <div className="grid grid-cols-5 md:grid-cols-7 gap-2 w-full">
               {info.tags.slice(0, 15).map((tag) => (
-                <h1
-                  className="bg-gray-400 p-2 flex items-center justify-center text-center rounded-md text-xs truncate"
-                  key={tag.id}
-                >
-                  {tag.name}
-                </h1>
+                <div key={tag.id} className="bg-gray-400 p-2 flex items-center justify-center w-full rounded hover:col-span-3 cursor-pointer">
+                  <h1 className="text-sm truncate" >
+                    {tag.name}
+                  </h1>
+                </div>
               ))}
             </div>
           </div>
         )}
       </div>
-
     </>
   );
 };

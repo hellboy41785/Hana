@@ -3,9 +3,8 @@ const Relation = ({ info }) => {
   return (
     <>
       {/* Relations */}
-
       <h1 className="text-2xl font-mono">Relation</h1>
-      <div className="flex overflow-x-scroll scrollbar   gap-2  p-2 ">
+      <div className="flex overflow-x-scroll scrollbar scrollbar-h-1 scrollbar-thumb-gray-500  scrollbar-thumb-rounded-lg  gap-2  p-2 ">
         {info.relations.edges.map((relation) => (
           <div
             className=" relative min-w-[150px] max-w-[150px] "

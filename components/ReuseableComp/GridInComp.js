@@ -1,6 +1,7 @@
 import Link from "next/link";
 import SaveToList from "../SaveToList/SaveToList";
 import Cookies from "js-cookie";
+import Image from "next/image";
 const GridInComp = ({ type, isFetched }) => {
   const anime = type.media;
 
@@ -8,9 +9,13 @@ const GridInComp = ({ type, isFetched }) => {
     <div key={anime.id} id={anime.id} className="relative font-mono">
       <Link href={`/${anime.type}/${anime.id}`} shallow={true}>
         <div className="relative w-full h-full ">
-          <img
+          <Image
             src={anime.coverImage.extraLarge}
+            width={100}
+            height={100}
             className="object-cover min-w-full min-h-full rounded-md"
+            alt="mylist"
+            unoptimized
           />
         </div>
         <div className="absolute inset-0 flex flex-col justify-between p-2 opacity-0 hover:opacity-95 hover:bg-black">

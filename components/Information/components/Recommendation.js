@@ -1,5 +1,5 @@
 import Link from "next/link";
-import GridComp from "../../ReuseableComp/GridComp";
+import Cookies from "js-cookie";
 import SaveToList from "../../SaveToList/SaveToList";
 
 const Recommendation = ({ info }) => {
@@ -7,7 +7,7 @@ const Recommendation = ({ info }) => {
     <>
       <h1 className="text-2xl">Recommendation</h1>
 
-      <div className="flex overflow-clip overflow-x-scroll scrollbar-w-1 scrollbar-thumb-gray-500  scrollbar-thumb-rounded-lg  gap-3 font-mono w-full cursor-pointer">
+      <div className="flex overflow-clip overflow-x-scroll scrollbar scrollbar-h-1 scrollbar-thumb-gray-500  scrollbar-thumb-rounded-lg  gap-3 font-mono w-full cursor-pointer">
         {info.recommendations.edges.map((rec) => {
           const anime = rec.node.mediaRecommendation;
           return (
@@ -70,7 +70,8 @@ const Recommendation = ({ info }) => {
                 </div>
               </Link>
               <div className=" w-full absolute bottom-0 p-1">
-                <SaveToList info={anime} myInfo={null} />
+              {Cookies.get("token") && <SaveToList info={anime} myInfo={null} />}
+                
               </div>
             </div>
           );

@@ -1,7 +1,9 @@
-import GridInComp from "../ReuseableComp/GridInComp";
+// import GridInComp from "../ReuseableComp/GridInComp";
 import { useMyListQuery } from "../../fetchData/useMyListQuery";
 import { useTypeStore } from "../../fetchData/useAnimeStore";
 import Loader from "../Loader";
+import dynamic from "next/dynamic";
+const GridInComp = dynamic(()=>import("../ReuseableComp/GridInComp"))
 
 const Entries = ({ mylist }) => {
   const type = useTypeStore((state) => state.type);

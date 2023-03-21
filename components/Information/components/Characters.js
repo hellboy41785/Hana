@@ -4,7 +4,7 @@ const Characters = ({info}) => {
   return (
     <>
     <h1 className="font-mono text-2xl">Characters</h1>
-    <div className="flex gap-3  overflow-x-scroll scrollbar-w-1 scrollbar-thumb-gray-500  scrollbar-thumb-rounded-lg cursor-pointer ">
+    <div className="flex gap-3  overflow-x-scroll scrollbar scrollbar-h-1 scrollbar-thumb-gray-500  scrollbar-thumb-rounded-lg cursor-pointer ">
       {info.characters.edges.map((char) => (
         <div className="relative min-w-[100px] max-w-[100px] p-1" key={char.id}>
           <img

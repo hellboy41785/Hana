@@ -1,25 +1,4 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@tailwind variants;
 
-/* ::-webkit-scrollbar {
-    width: 5px;
-
-
-}
-@layer utilities {
-    .medium::-webkit-scrollbar-thumb {
-      width: 2px;
-      background-color: #5b77c5;
-    }
-  }
-
-/* Style the thumb */
-/* ::-webkit-scrollbar-thumb {
-    background-color: #6a6767;
-    border-radius: 5px;
-    width: 3px;
-
-
-} */ 

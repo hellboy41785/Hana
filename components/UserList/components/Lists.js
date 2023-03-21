@@ -12,7 +12,7 @@ const Lists = ({mylist}) => {
     const myLists = data.data.MediaListCollection.lists;
 
     return (
-        <div className="flex gap-3 overflow-x-scroll cursor-pointer scrollbar scrollbar-thumb-gray-400 scrollbar-thumb-rounded-sm">
+        <div className="flex gap-3 overflow-x-scroll cursor-pointer scrollbar scrollbar-h-1 scrollbar-thumb-gray-400 scrollbar-thumb-rounded-sm">
             {myLists.map((list) => (
                 <div key={list.name}>
                     <Link href={`/mylist/${id}/${mylist[1]}/${list.status}`} shallow={true}>
