@@ -3,14 +3,16 @@ import SaveToList from "../../SaveToList/SaveToList";
 import Cookies from "js-cookie";
 import Link from "next/link";
 import QuoteLoader from "../../QuoteLoader";
+import QuoteError from "../../Error/QuoteError";
 
 const QuoteInfo = ({ quote, fetch }) => {
-  const { data, isLoading, refetch, isFetched, isFetching } = useQuoteInfo({
+  const { data, isLoading, refetch, isFetched, isFetching,isError } = useQuoteInfo({
     searchName: quote.anime,
     searchChar: quote.character,
   });
 
   if (isLoading || isFetching) return <QuoteLoader />;
+  if(isError) return <QuoteError refetch={refetch} anime={quote.anime}/>
 
   const anime = data === undefined ? null : data.data.Media;
   const character = data === undefined ? null : data.data.Character;
